@@ -18,16 +18,19 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log(inputsArray);
-  }, [inputsArray]);
+    const words = inputsArray.join(", ");
+    const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
+    const example2 = `www.${inputsArray[1]}${inputsArray[2]}.org`;
 
-  useEffect(() => {
+    console.log(inputsArray);
+    console.log(words + "\n" + example1 + "\n" + example2);
+
     async function fetchData() {
-      const data = await domainNameGenerator();
+      const data = await domainNameGenerator(words, example1, example2);
       setGeneratedName(data);
     }
     fetchData();
-  }, []);
+  }, [inputsArray]);
 
   return (
     <div className="text-3xl text-white text-center flex flex-col justify-center items-center h-screen">

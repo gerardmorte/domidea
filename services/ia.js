@@ -9,16 +9,16 @@ Example 2: www.ideadomain.org
 Generate new example 
 */
 
-export async function domainNameGenerator() {
+export async function domainNameGenerator(words, example1, example2) {
   try {
     const data = {
       model: "command-xlarge-20221108",
-      prompt: `Generate a short creative name for a web domain using the following words: domain, idea
-      Example 1: www.domainidea.com
-      Example 2: www.ideadomain.org
+      prompt: `Generate a short creative name for a web domain using the following words: ${words}
+      Example 1: ${example1}
+      Example 2: ${example2}
       Generate new example`,
       max_tokens: 25,
-      temperature: 1.50,
+      temperature: 1,
       k: 0,
       p: 0.75,
       frequency_penalty: 1,
