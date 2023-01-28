@@ -18,7 +18,7 @@ export async function domainNameGenerator(words, example1, example2) {
       Example 2: ${example2}
       Generate new example`,
       max_tokens: 25,
-      temperature: 1,
+      temperature: 2,
       k: 0,
       p: 0.75,
       frequency_penalty: 1,
