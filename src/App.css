@@ -1,0 +1,18 @@
+* {
+  background-color: #121212;
+}
+
+.formBackground {
+  background-color: #1e1e1e;
+}
+
+.slimBoxShadow {
+  -webkit-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
+  border-radius: 10px;
+}
+
+/*
+neutral-900
+*/

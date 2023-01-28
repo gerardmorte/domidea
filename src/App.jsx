@@ -36,45 +36,78 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col justify-between h-screen">
       <Header />
-      <div className="text-white text-center flex flex-col justify-center items-center">
-        <h1 className="my-12 md:mt-20 md:mb-16 text-4xl md:text-6xl">
-          Name ideas for web domains
+      <div className="text-white flex flex-col w-8/12 mx-auto">
+        <h1 className="text-6xl mt-5">domidea</h1>
+        <h1 className="text-4xl md:text-5xl text-left mt-12">
+          Name ideas for web domains. 💡
         </h1>
-        <input
-          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
-          type="text"
-          onChange={handleInput1Change}
-          value={input1}
-          placeholder="Write a word or concept..."
-        />
-        <input
-          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
-          type="text"
-          onChange={handleInput2Change}
-          value={input2}
-          placeholder="Write a word or concept..."
-        />
-        <input
-          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
-          type="text"
-          onChange={handleInput3Change}
-          value={input3}
-          placeholder="Write a word or concept..."
-        />
-        <div className="flex p-2 pb-4 text-3xl md:text-6xl md:my-6">
-          <div className="p-4 ">
-            {!isGenerate ? <p>{generatedName}</p> : <p>Loading...</p>}
+        <div className="flex justify-between my-12 w-10/12">
+          <div className="flex flex-col justify-between w-6/12">
+            <h2 className="text-4xl text-left">
+              Enter three words or concepts to generate a name for a web domain.
+            </h2>
+            <button
+              className="text-3xl bg-purple-600 text-white pb-5 pt-4 rounded-3xl hover:opacity-70 transition duration-500 w-6/12"
+              onClick={handleButtonClick}
+            >
+              Generate name
+            </button>
+            <div className="w-auto mb-5 slimBoxShadow p-10 formBackground text-4xl text-center">
+              {!isGenerate ? (
+                <p className="formBackground">{generatedName}</p>
+              ) : (
+                <p className="formBackground">Loading...</p>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col p-6 formBackground slimBoxShadow">
+            <label className="formBackground text-left p-2" htmlFor="">
+              Word 1
+            </label>
+            <input
+              className="text-white text-center mb-5 px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow"
+              type="text"
+              onChange={handleInput1Change}
+              value={input1}
+              placeholder="Write a word or concept..."
+            />
+            <label className="formBackground text-left p-2" htmlFor="">
+              Word 2
+            </label>
+            <input
+              className="text-white text-center mb-5 px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow"
+              type="text"
+              onChange={handleInput2Change}
+              value={input2}
+              placeholder="Write a word or concept..."
+            />
+            <label className="formBackground text-left p-2" htmlFor="">
+              Word 3
+            </label>
+            <input
+              className="text-white text-center px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow mb-5"
+              type="text"
+              onChange={handleInput3Change}
+              value={input3}
+              placeholder="Write a word or concept..."
+            />
           </div>
         </div>
-        <button
-          className="border-2 border-white p-4 mt-4 md:mt-8 text-3xl"
-          onClick={handleButtonClick}
-        >
-          Generate name!
-        </button>
+        {/* <div className="w-auto mb-5 slimBoxShadow p-10 formBackground text-5xl text-center">
+          {!isGenerate ? (
+            <p className="formBackground">{generatedName}</p>
+          ) : (
+            <p className="formBackground">Loading...</p>
+          )}
+        </div> */}
       </div>
+      <footer className="flex bg-black">
+        <p className="flex w-10/12 py-5 bg-black mx-auto text-white">
+          by Gerard Morte
+        </p>
+      </footer>
     </div>
   );
 }
