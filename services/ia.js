@@ -1,4 +1,4 @@
-const COHERE_API_KEY = "NWNonsdhK6r4XljUt9FsrBgDwK4KUTEi0e87fGfX";
+const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
 const COHERE_API_GENERATE_URL = "https://api.cohere.ai/generate";
 
 /*
