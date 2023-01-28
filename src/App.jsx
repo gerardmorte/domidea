@@ -1,6 +1,7 @@
 import "./App.css";
 import { domainNameGenerator } from "../services/ia";
 import { useState } from "react";
+import Header from "./components/Header";
 
 export default function App() {
   const [isGenerate, setIsGenerate] = useState(false);
@@ -35,34 +36,44 @@ export default function App() {
   };
 
   return (
-    <div className="text-3xl text-white text-center flex flex-col justify-center items-center h-screen">
-      <h1 className="my-7 text-6xl">domidea 💡</h1>
-      <input
-        className="mt-2 mb-2 text-black text-center"
-        type="text"
-        onChange={handleInput1Change}
-        value={input1}
-      />
-      <input
-        className="mb-2 text-black text-center"
-        type="text"
-        onChange={handleInput2Change}
-        value={input2}
-      />
-      <input
-        className="mb-2 text-black text-center"
-        type="text"
-        onChange={handleInput3Change}
-        value={input3}
-      />
-      <button
-        className="border-2 border-white p-2 mt-2"
-        onClick={handleButtonClick}
-      >
-        Generate name!
-      </button>
-      <div className="mt-10">
-        {!isGenerate ? <p>{generatedName}</p> : <p>Loading...</p>}
+    <div className="flex flex-col h-screen">
+      <Header />
+      <div className="text-white text-center flex flex-col justify-center items-center">
+        <h1 className="my-12 md:mt-20 md:mb-16 text-4xl md:text-6xl">
+          Name ideas for web domains
+        </h1>
+        <input
+          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
+          type="text"
+          onChange={handleInput1Change}
+          value={input1}
+          placeholder="Write a word or concept..."
+        />
+        <input
+          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
+          type="text"
+          onChange={handleInput2Change}
+          value={input2}
+          placeholder="Write a word or concept..."
+        />
+        <input
+          className="text-black text-center mb-5 px-8 md:px-12 py-5 text-2xl"
+          type="text"
+          onChange={handleInput3Change}
+          value={input3}
+          placeholder="Write a word or concept..."
+        />
+        <div className="flex p-2 pb-4 text-3xl md:text-6xl md:my-6">
+          <div className="p-4 ">
+            {!isGenerate ? <p>{generatedName}</p> : <p>Loading...</p>}
+          </div>
+        </div>
+        <button
+          className="border-2 border-white p-4 mt-4 md:mt-8 text-3xl"
+          onClick={handleButtonClick}
+        >
+          Generate name!
+        </button>
       </div>
     </div>
   );
