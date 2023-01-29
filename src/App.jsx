@@ -12,7 +12,8 @@ export default function App() {
   const [input3, setInput3] = useState("");
   const [randomness, setRandomness] = useState(2.5);
   const [appearAnimation, setAppearAnimation] = useState("");
-  const [copiedAlert, setCopiedAlert] = useState("hidden");
+  const [copiedAlert, setCopiedAlert] = useState("");
+  const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
 
   useEffect(() => {
     setAppearAnimation("appearAnimation");
@@ -21,6 +22,11 @@ export default function App() {
   const handleButtonClipboard = () => {
     navigator.clipboard.writeText(generatedName);
     setCopiedAlert("alertEffect");
+    setDisableBtnClipboard(true);
+    setTimeout(() => {
+      setCopiedAlert("");
+      setDisableBtnClipboard(false);
+    }, 2000);
   };
 
   const handleInput1Change = (e) => setInput1(e.target.value);
@@ -55,9 +61,9 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-auto md:min-h-screen bg-neutral-900">
+    <div className="flex flex-col justify-between h-auto md:min-h-screen bg-neutral-900 relative">
       <Header />
-      <div className="text-white flex flex-col w-10/12 md:w-8/12 mx-auto">
+      <div className="text-white flex flex-col w-10/12 md:w-8/12 mx-auto md:mb-2">
         <h1 className="text-4xl md:text-5xl text-center mb-10 mt-7 font-bold text-white bg-gradient-to-r from-white to-gray-500 text-transparent bg-clip-text">
           Name ideas for web domains.
         </h1>
@@ -103,7 +109,7 @@ export default function App() {
               />
             </div>
           </div>
-          <div className="md:w-6/12 relative">
+          <div className="md:w-6/12">
             <div className="flex flex-col justify-between md:w-12/12 gap-10">
               <div className="flex flex-col justify-between w-12/12">
                 <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12">
@@ -136,10 +142,13 @@ export default function App() {
               <div className="relative slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
                 {!isGenerate ? (
                   <>
-                    <AiOutlineCopy
-                      onClick={handleButtonClipboard}
+                    <button
                       className="text-white text-3xl absolute right-0 top-0 m-1 cursor-pointer"
-                    />
+                      onClick={handleButtonClipboard}
+                      disabled={disableBtnClipboard}
+                    >
+                      <AiOutlineCopy />
+                    </button>
                     <p className="text-zinc-200 font-bold">{generatedName}</p>
                   </>
                 ) : (
@@ -147,20 +156,19 @@ export default function App() {
                 )}
               </div>
             </div>
-            <div
-              className={`slimBoxShadow w-max p-2 mt-2 absolute right-0 ${copiedAlert}`}
-            >
-              <p className="text-white text-right">Copied to clipboard</p>
-            </div>
           </div>
         </div>
       </div>
-
       <footer className="flex">
         <p className="flex w-10/12 py-5 mx-auto justify-end text-zinc-200">
           by Gerard Morte
         </p>
       </footer>
+      <div
+        className={`rounded-2xl font-bold p-2 px-12 absolute left-0 right-0 ml-auto mr-auto max-w-max bottom-0 opacity-0 bg-purple-800 ${copiedAlert}`}
+      >
+        <p className="text-white text-right">Copied to clipboard</p>
+      </div>
     </div>
   );
 }

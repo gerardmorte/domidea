@@ -51,18 +51,21 @@
 
 @keyframes alertCopiedEffect {
   0% {
-    opacity: 0;
+    margin-bottom: 0;
+    opacity: 1;
   }
 
   50% {
+    margin-bottom: 3rem;
     opacity: 1;
   }
 
   100% {
+    margin-bottom: 3rem;
     opacity: 0;
   }
 }
 
 .alertEffect {
-  animation: alertCopiedEffect 3s;
+  animation: alertCopiedEffect 2s;
 }
