@@ -2,6 +2,7 @@ import "./App.css";
 import { domainNameGenerator } from "../services/ia";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
+import { AiOutlineCopy } from "react-icons/ai";
 
 export default function App() {
   const [isGenerate, setIsGenerate] = useState(false);
@@ -15,6 +16,11 @@ export default function App() {
   useEffect(() => {
     setAppearAnimation("appearAnimation");
   }, []);
+
+  const handleButtonClipboard = () => {
+    navigator.clipboard.writeText(generatedName);
+    alert("Copy to clipboard: " + generatedName);
+  };
 
   const handleInput1Change = (e) => setInput1(e.target.value);
   const handleInput2Change = (e) => setInput2(e.target.value);
@@ -48,7 +54,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-auto md:h-screen bg-neutral-900">
+    <div className="flex flex-col justify-between h-auto md:h-auto bg-neutral-900">
       <Header />
       <div className="text-white flex flex-col w-10/12 md:w-8/12 mx-auto">
         <h1 className="text-4xl md:text-5xl text-center mb-10 mt-7 font-bold text-white bg-gradient-to-r from-white to-gray-500 text-transparent bg-clip-text">
@@ -96,41 +102,52 @@ export default function App() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between md:w-6/12 gap-10">
-            <div className="flex flex-col justify-between w-12/12">
-              <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12">
-                <label
-                  className="text-zinc-200 text-xl text-left p-2"
-                  htmlFor=""
-                >
-                  Randomness:{" "}
-                  <span className="bg-neutral-900 px-3 pt-2 pb-3 rounded-xl">
-                    {randomness}
-                  </span>
-                </label>
-                <input
-                  className="py-10"
-                  type="range"
-                  value={randomness}
-                  min="0"
-                  max="5"
-                  step="0.10"
-                  onChange={handleInputRange}
-                ></input>
+          <div className="md:w-6/12 relative">
+            <div className="flex flex-col justify-between md:w-12/12 gap-10">
+              <div className="flex flex-col justify-between w-12/12">
+                <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12">
+                  <label
+                    className="text-zinc-200 text-xl text-left p-2"
+                    htmlFor=""
+                  >
+                    Randomness:{" "}
+                    <span className="bg-neutral-900 px-3 pt-2 pb-3 rounded-xl">
+                      {randomness}
+                    </span>
+                  </label>
+                  <input
+                    className="py-10"
+                    type="range"
+                    value={randomness}
+                    min="0"
+                    max="5"
+                    step="0.10"
+                    onChange={handleInputRange}
+                  ></input>
+                </div>
+              </div>
+              <button
+                className="text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl hover:opacity-70 transition duration-500 w-12/12"
+                onClick={handleButtonClick}
+              >
+                Generate name
+              </button>
+              <div className="relative slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
+                {!isGenerate ? (
+                  <>
+                    <AiOutlineCopy
+                      onClick={handleButtonClipboard}
+                      className="text-white text-3xl absolute right-0 top-0 m-1 cursor-pointer"
+                    />
+                    <p className="text-zinc-200 font-bold">{generatedName}</p>
+                  </>
+                ) : (
+                  <span className="loader"></span>
+                )}
               </div>
             </div>
-            <button
-              className="text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl hover:opacity-70 transition duration-500 w-12/12"
-              onClick={handleButtonClick}
-            >
-              Generate name
-            </button>
-            <div className="slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
-              {!isGenerate ? (
-                <p className="text-zinc-200 font-bold">{generatedName}</p>
-              ) : (
-                <span className="loader"></span>
-              )}
+            <div className="slimBoxShadow w-max p-2 mt-2 absolute right-0">
+              <p className="text-white text-right">Copied to clipboard</p>
             </div>
           </div>
         </div>
