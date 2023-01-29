@@ -85,7 +85,7 @@ export default function App() {
                 type="text"
                 onChange={handleInput1Change}
                 value={input1}
-                placeholder=""
+                placeholder="Write a word or concept..."
               />
               <label className="text-left p-2 text-xl" htmlFor="">
                 Word 2:
@@ -123,7 +123,7 @@ export default function App() {
                     </span>
                   </label>
                   <input
-                    className="py-10"
+                    className="py-10 accent-white"
                     type="range"
                     value={randomness}
                     min="0"
@@ -143,7 +143,7 @@ export default function App() {
                 {!isGenerate ? (
                   <>
                     <button
-                      className="text-white text-3xl absolute right-0 top-0 m-1 cursor-pointer"
+                      className="text-white text-3xl absolute right-0 top-0 m-1 cursor-pointer p-1"
                       onClick={handleButtonClipboard}
                       disabled={disableBtnClipboard}
                     >
