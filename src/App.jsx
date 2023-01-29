@@ -43,33 +43,33 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-screen bg-neutral-900">
+    <div className="flex flex-col justify-between h-auto md:h-screen bg-neutral-900">
       <Header />
-      <div className="text-white flex flex-col w-8/12 mx-auto">
+      <div className="text-white flex flex-col w-10/12 md:w-8/12 mx-auto">
         <h1 className="text-4xl md:text-5xl text-center mb-10 mt-7 font-bold text-white bg-gradient-to-r from-white to-gray-500 text-transparent bg-clip-text">
           Name ideas for web domains.
         </h1>
-        <h2 className="text-4xl w-6/12 mt-6 text-zinc-200">
+        <h2 className="text-4xl text-center md:text-left md:w-6/12 mt-6 text-zinc-200">
           Enter three words or concepts to generate a name for a web domain.
         </h2>
-        <div className="flex my-12 w-12/12 gap-10">
-          <div className="flex flex-col justify-between w-6/12 gap-10">
+        <div className="flex flex-col md:flex-row my-12 w-12/12 gap-10">
+          <div className="flex flex-col justify-between md:w-6/12 gap-10">
             <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12 text-zinc-200">
               <label className=" text-left p-2 text-xl" htmlFor="">
                 Word 1:
               </label>
               <input
-                className="bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow"
+                className="bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow"
                 type="text"
                 onChange={handleInput1Change}
                 value={input1}
-                placeholder="Write a word or concept..."
+                placeholder=""
               />
               <label className="text-left p-2 text-xl" htmlFor="">
                 Word 2:
               </label>
               <input
-                className=" bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow"
+                className=" bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow"
                 type="text"
                 onChange={handleInput2Change}
                 value={input2}
@@ -79,7 +79,7 @@ export default function App() {
                 Word 3:
               </label>
               <input
-                className="bg-neutral-900 text-center px-8 md:px-12 py-5 text-2xl rounded-xl slimBoxShadow mb-5"
+                className="bg-neutral-900 text-center px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow mb-5"
                 type="text"
                 onChange={handleInput3Change}
                 value={input3}
@@ -87,7 +87,7 @@ export default function App() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between w-6/12">
+          <div className="flex flex-col justify-between md:w-6/12 gap-10">
             <div className="flex flex-col justify-between w-12/12">
               <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12">
                 <label
@@ -116,7 +116,7 @@ export default function App() {
             >
               Generate name
             </button>
-            <div className="slimBoxShadow p-10 bg-neutral-800 text-3xl text-center">
+            <div className="slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
               {!isGenerate ? (
                 <p className="text-zinc-200 font-bold">{generatedName}</p>
               ) : (
@@ -128,7 +128,7 @@ export default function App() {
       </div>
 
       <footer className="flex">
-        <p className="flex w-10/12 py-5 mx-auto text-zinc-200">
+        <p className="flex w-10/12 py-5 mx-auto justify-end text-zinc-200">
           by Gerard Morte
         </p>
       </footer>
