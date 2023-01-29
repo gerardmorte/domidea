@@ -9,7 +9,12 @@ Example 2: www.ideadomain.org
 Generate new example 
 */
 
-export async function domainNameGenerator(words, example1, example2) {
+export async function domainNameGenerator(
+  words,
+  example1,
+  example2,
+  randomness
+) {
   try {
     const data = {
       model: "command-xlarge-20221108",
@@ -18,7 +23,7 @@ export async function domainNameGenerator(words, example1, example2) {
       Example 2: ${example2}
       Generate new example`,
       max_tokens: 20,
-      temperature: 5,
+      temperature: randomness,
       k: 0,
       p: 0.75,
       frequency_penalty: 1,
@@ -38,6 +43,7 @@ export async function domainNameGenerator(words, example1, example2) {
       body: JSON.stringify(data),
     }).then((res) => res.json());
 
+    console.log(randomness);
     console.log(response);
 
     const { text } = response.generations[0];
