@@ -34,3 +34,17 @@
     transform: translateX(-99%);
   }
 }
+
+.appearAnimation {
+  animation: appear 4s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

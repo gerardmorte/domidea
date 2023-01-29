@@ -1,6 +1,6 @@
 import "./App.css";
 import { domainNameGenerator } from "../services/ia";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 
 export default function App() {
@@ -10,6 +10,11 @@ export default function App() {
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [randomness, setRandomness] = useState(2.5);
+  const [appearAnimation, setAppearAnimation] = useState("");
+
+  useEffect(() => {
+    setAppearAnimation("appearAnimation");
+  }, []);
 
   const handleInput1Change = (e) => setInput1(e.target.value);
   const handleInput2Change = (e) => setInput2(e.target.value);
@@ -49,10 +54,14 @@ export default function App() {
         <h1 className="text-4xl md:text-5xl text-center mb-10 mt-7 font-bold text-white bg-gradient-to-r from-white to-gray-500 text-transparent bg-clip-text">
           Name ideas for web domains.
         </h1>
-        <h2 className="text-4xl text-center md:text-left md:w-6/12 mt-6 text-zinc-200">
+        <h2
+          className={`text-4xl text-center md:text-left md:w-6/12 mt-6 text-zinc-200 ${appearAnimation}`}
+        >
           Enter three words or concepts to generate a name for a web domain.
         </h2>
-        <div className="flex flex-col md:flex-row my-12 w-12/12 gap-10">
+        <div
+          className={`flex flex-col md:flex-row my-12 w-12/12 gap-10 ${appearAnimation}`}
+        >
           <div className="flex flex-col justify-between md:w-6/12 gap-10">
             <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12 text-zinc-200">
               <label className=" text-left p-2 text-xl" htmlFor="">
