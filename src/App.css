@@ -48,3 +48,21 @@
     opacity: 1;
   }
 }
+
+@keyframes alertCopiedEffect {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.alertEffect {
+  animation: alertCopiedEffect 3s;
+}

@@ -12,6 +12,7 @@ export default function App() {
   const [input3, setInput3] = useState("");
   const [randomness, setRandomness] = useState(2.5);
   const [appearAnimation, setAppearAnimation] = useState("");
+  const [copiedAlert, setCopiedAlert] = useState("hidden");
 
   useEffect(() => {
     setAppearAnimation("appearAnimation");
@@ -19,7 +20,7 @@ export default function App() {
 
   const handleButtonClipboard = () => {
     navigator.clipboard.writeText(generatedName);
-    alert("Copy to clipboard: " + generatedName);
+    setCopiedAlert("alertEffect");
   };
 
   const handleInput1Change = (e) => setInput1(e.target.value);
@@ -54,7 +55,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-auto md:h-auto bg-neutral-900">
+    <div className="flex flex-col justify-between h-auto md:min-h-screen bg-neutral-900">
       <Header />
       <div className="text-white flex flex-col w-10/12 md:w-8/12 mx-auto">
         <h1 className="text-4xl md:text-5xl text-center mb-10 mt-7 font-bold text-white bg-gradient-to-r from-white to-gray-500 text-transparent bg-clip-text">
@@ -146,7 +147,9 @@ export default function App() {
                 )}
               </div>
             </div>
-            <div className="slimBoxShadow w-max p-2 mt-2 absolute right-0">
+            <div
+              className={`slimBoxShadow w-max p-2 mt-2 absolute right-0 ${copiedAlert}`}
+            >
               <p className="text-white text-right">Copied to clipboard</p>
             </div>
           </div>
