@@ -1,14 +1,6 @@
 const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
 const COHERE_API_GENERATE_URL = "https://api.cohere.ai/generate";
 
-/*
-PROMPT:
-Generate a short creative name for a web domain using the following words: domain, idea
-Example 1: www.domainidea.com
-Example 2: www.ideadomain.org
-Generate new example 
-*/
-
 export async function domainNameGenerator(
   words,
   example1,
@@ -28,7 +20,6 @@ export async function domainNameGenerator(
       p: 0.75,
       frequency_penalty: 1,
       presence_penalty: 1,
-      // stop_sequences: ["--"],
       return_likelihoods: "NONE",
       truncate: "END",
     };
@@ -42,10 +33,6 @@ export async function domainNameGenerator(
       },
       body: JSON.stringify(data),
     }).then((res) => res.json());
-
-    console.log(randomness);
-    console.log(response);
-
     const { text } = response.generations[0];
     return text;
   } catch (error) {

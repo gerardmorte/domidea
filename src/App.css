@@ -56,12 +56,12 @@
   }
 
   50% {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     opacity: 1;
   }
 
   100% {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     opacity: 0;
   }
 }
