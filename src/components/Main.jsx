@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
-import { TiTick } from "react-icons/ti";
 import { domainNameGenerator } from "../../services/ia";
+import CopiedAlert from "./CopiedAlert";
 
 export default function Main() {
   const [isGenerate, setIsGenerate] = useState(false);
@@ -11,7 +11,7 @@ export default function Main() {
   const [input3, setInput3] = useState("");
   const [randomness, setRandomness] = useState(2.5);
   const [appearAnimation, setAppearAnimation] = useState("");
-  const [copiedAlert, setCopiedAlert] = useState("");
+  const [copiedAlertClass, setCopiedAlertClass] = useState("");
   const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
 
   useEffect(() => {
@@ -20,10 +20,10 @@ export default function Main() {
 
   const handleButtonClipboard = () => {
     navigator.clipboard.writeText(generatedName);
-    setCopiedAlert("alertEffect");
+    setCopiedAlertClass("alertEffect");
     setDisableBtnClipboard(true);
     setTimeout(() => {
-      setCopiedAlert("");
+      setCopiedAlertClass("");
       setDisableBtnClipboard(false);
     }, 2000);
   };
@@ -154,12 +154,7 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <div
-        className={`flex gap-2 rounded-2xl font-bold p-2 px-12 absolute left-0 right-0 ml-auto mr-auto max-w-max bottom-0 opacity-0 bg-purple-800 ${copiedAlert}`}
-      >
-        <TiTick className="text-2xl text-green-500" />
-        <p className="text-zinc-200">Copied to clipboard</p>
-      </div>
+      <CopiedAlert copiedAlertClass={copiedAlertClass} />
     </>
   );
 }
