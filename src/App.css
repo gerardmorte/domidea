@@ -1,3 +1,15 @@
+.background {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgb(27, 27, 27) 0px,
+    rgb(27, 27, 27) 97px,
+    rgb(24, 24, 24) 97px,
+    rgb(24, 24, 24) 194px,
+    rgb(20, 20, 20) 194px,
+    rgb(20, 20, 20) 291px
+  );
+}
+
 .slimBoxShadow {
   -webkit-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 1);
   -moz-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 1);

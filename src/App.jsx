@@ -6,7 +6,7 @@ import Main from "./components/Main";
 
 export default function App() {
   return (
-    <div className="flex flex-col justify-between h-auto md:min-h-screen bg-neutral-900 relative">
+    <div className="flex flex-col justify-between h-auto md:min-h-screen background relative">
       <Header />
       <Main />
       <Footer />
