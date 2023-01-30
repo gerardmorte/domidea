@@ -4,7 +4,7 @@ import { domainNameGenerator } from "../../services/ia";
 import CopiedAlert from "./CopiedAlert";
 
 export default function Generator() {
-  const [isGenerate, setIsGenerate] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [generatedName, setGeneratedName] = useState("www.example.com");
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
@@ -13,6 +13,7 @@ export default function Generator() {
   const [appearAnimation, setAppearAnimation] = useState("");
   const [copiedAlertClass, setCopiedAlertClass] = useState("");
   const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
+  const [generatedNamesList, setGeneratedNamesList] = useState([]);
 
   useEffect(() => {
     setAppearAnimation("appearAnimation");
@@ -39,7 +40,7 @@ export default function Generator() {
       input2.toLocaleLowerCase(),
       input3.toLocaleLowerCase(),
     ];
-    setIsGenerate(true);
+    setIsGenerating(true);
     const words = inputsArray.join(", ");
     const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
     const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
@@ -51,8 +52,13 @@ export default function Generator() {
         example2,
         parseFloat(randomness)
       );
-      setIsGenerate(false);
-      setGeneratedName(data);
+      if (generatedNamesList.includes(data)) {
+        handleButtonClick();
+      } else {
+        setGeneratedNamesList([...generatedNamesList, data]);
+        setIsGenerating(false);
+        setGeneratedName(data);
+      }
     }
     fetchData();
   };
@@ -127,7 +133,7 @@ export default function Generator() {
               Generate name
             </button>
             <div className="relative slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
-              {!isGenerate ? (
+              {!isGenerating ? (
                 <>
                   <button
                     className="text-white text-3xl absolute right-0 top-0 m-1 cursor-pointer p-1"
