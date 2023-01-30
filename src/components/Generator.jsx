@@ -141,11 +141,11 @@ export default function Generator() {
               ) : (
                 <span className="loader"></span>
               )}
+              <CopiedAlert copiedAlertClass={copiedAlertClass} />
             </div>
           </div>
         </div>
       </div>
-      <CopiedAlert copiedAlertClass={copiedAlertClass} />
     </>
   );
 }
