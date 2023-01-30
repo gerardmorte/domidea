@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
+import { TiTick } from "react-icons/ti";
 import { domainNameGenerator } from "../../services/ia";
 
 export default function Main() {
@@ -33,7 +34,11 @@ export default function Main() {
   const handleInputRange = (e) => setRandomness(e.target.value);
 
   const handleButtonClick = () => {
-    const inputsArray = [input1, input2, input3];
+    const inputsArray = [
+      input1.toLocaleLowerCase(),
+      input2.toLocaleLowerCase(),
+      input3.toLocaleLowerCase(),
+    ];
     setIsGenerate(true);
     const words = inputsArray.join(", ");
     const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
@@ -67,31 +72,31 @@ export default function Main() {
         >
           <div className="flex flex-col justify-between md:w-6/12 gap-10">
             <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12 text-zinc-200">
-              <label className=" text-left p-2 text-xl" htmlFor="">
+              <label className=" text-left p-2 text-lg md:text-xl" htmlFor="">
                 Word 1:
               </label>
               <input
-                className="bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow"
+                className="bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-lg md:text-2xl rounded-xl slimBoxShadow"
                 type="text"
                 onChange={handleInput1Change}
                 value={input1}
                 placeholder="Write a word or concept..."
               />
-              <label className="text-left p-2 text-xl" htmlFor="">
+              <label className="text-left p-2 text-lg md:text-xl" htmlFor="">
                 Word 2:
               </label>
               <input
-                className=" bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow"
+                className=" bg-neutral-900 text-center mb-5 px-8 md:px-12 py-5 text-lg md:text-2xl rounded-xl slimBoxShadow"
                 type="text"
                 onChange={handleInput2Change}
                 value={input2}
                 placeholder="Write a word or concept..."
               />
-              <label className="text-left p-2 text-xl" htmlFor="">
+              <label className="text-left p-2 text-lg md:text-xl" htmlFor="">
                 Word 3:
               </label>
               <input
-                className="bg-neutral-900 text-center px-8 md:px-12 py-5 text-xl md:text-2xl rounded-xl slimBoxShadow mb-5"
+                className="bg-neutral-900 text-center px-8 md:px-12 py-5 text-lg md:text-2xl rounded-xl slimBoxShadow mb-5"
                 type="text"
                 onChange={handleInput3Change}
                 value={input3}
@@ -104,16 +109,16 @@ export default function Main() {
               <div className="flex flex-col justify-between w-12/12">
                 <div className="flex flex-col p-6 bg-neutral-800 slimBoxShadow w-12/12">
                   <label
-                    className="text-zinc-200 text-xl text-left p-2"
+                    className="text-zinc-200 text-lg md:text-xl text-left p-2"
                     htmlFor=""
                   >
                     Randomness:{" "}
-                    <span className="bg-neutral-900 px-3 pt-2 pb-3 rounded-xl">
+                    <span className="bg-neutral-900 px-3 pt-2 pb-2 ml-1 rounded-xl">
                       {randomness}
                     </span>
                   </label>
                   <input
-                    className="py-10 accent-white"
+                    className="py-6 md:py-10 accent-white"
                     type="range"
                     value={randomness}
                     min="0"
@@ -124,7 +129,7 @@ export default function Main() {
                 </div>
               </div>
               <button
-                className="text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl hover:opacity-70 transition duration-500 w-12/12"
+                className="text-2xl md:text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl md:hover:opacity-70 transition duration-300 w-12/12"
                 onClick={handleButtonClick}
               >
                 Generate name
@@ -150,9 +155,10 @@ export default function Main() {
         </div>
       </div>
       <div
-        className={`rounded-2xl font-bold p-2 px-12 absolute left-0 right-0 ml-auto mr-auto max-w-max bottom-0 opacity-0 bg-purple-800 ${copiedAlert}`}
+        className={`flex gap-2 rounded-2xl font-bold p-2 px-12 absolute left-0 right-0 ml-auto mr-auto max-w-max bottom-0 opacity-0 bg-purple-800 ${copiedAlert}`}
       >
-        <p className="text-zinc-200 text-right">Copied to clipboard</p>
+        <TiTick className="text-2xl text-green-500" />
+        <p className="text-zinc-200">Copied to clipboard</p>
       </div>
     </>
   );
