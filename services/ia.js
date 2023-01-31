@@ -10,7 +10,7 @@ export async function domainNameGenerator(
   try {
     const data = {
       model: "command-xlarge-20221108",
-      prompt: `Generate a short creative name for a web domain using the following words: ${words}
+      prompt: `Generate a very short creative name for a web domain using the following words: ${words}
       Example 1: ${example1}
       Example 2: ${example2}
       Generate new example`,

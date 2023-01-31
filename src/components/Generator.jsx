@@ -46,18 +46,25 @@ export default function Generator() {
     const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
 
     async function fetchData() {
+      const MAX_CHARACTERS = 25;
       const data = await domainNameGenerator(
         words,
         example1,
         example2,
         parseFloat(randomness)
       );
-      if (generatedNamesList.includes(data)) {
+      if (
+        generatedNamesList.includes(data) ||
+        data.length >= MAX_CHARACTERS ||
+        data.includes(" ")
+      ) {
         handleButtonClick();
+        console.log(data);
       } else {
+        console.log(data);
         setGeneratedNamesList([...generatedNamesList, data]);
         setIsGenerating(false);
-        setGeneratedName(data);
+        setGeneratedName(data.toLocaleLowerCase());
       }
     }
     fetchData();
