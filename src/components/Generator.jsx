@@ -14,6 +14,7 @@ export default function Generator() {
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [randomness, setRandomness] = useState(2.5);
+  const [disableBtnGenerate, setDisableBtnGenerate] = useState(false);
   const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
   const [showClipboardAlert, setShowClipboardAlert] = useState(false);
   const [showRequiredInputsAlert, setShowRequiredInputsAlert] = useState(false);
@@ -45,8 +46,10 @@ export default function Generator() {
     ];
     if (inputsArray.some((word) => word.length === 0)) {
       setShowRequiredInputsAlert(true);
+      setDisableBtnGenerate(true);
       setTimeout(() => {
         setShowRequiredInputsAlert(false);
+        setDisableBtnGenerate(false);
       }, 3000);
     } else {
       setIsGenerating(true);
@@ -146,6 +149,7 @@ export default function Generator() {
           <button
             className="text-2xl md:text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl md:hover:opacity-70 transition duration-300 w-12/12"
             onClick={handleButtonClick}
+            disabled={disableBtnGenerate}
           >
             Generate name
           </button>
