@@ -53,6 +53,7 @@ export default function Generator() {
       }, 3000);
     } else {
       setIsGenerating(true);
+      setDisableBtnGenerate(true);
       const words = inputsArray.join(", ");
       const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
       const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
@@ -75,6 +76,7 @@ export default function Generator() {
           setGeneratedNamesList([...generatedNamesList, data]);
           setIsGenerating(false);
           setGeneratedName(data.toLocaleLowerCase());
+          setDisableBtnGenerate(false);
         }
       }
     }
