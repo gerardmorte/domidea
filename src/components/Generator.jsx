@@ -160,7 +160,7 @@ export default function Generator() {
             backgroundColor={"bg-red-700"}
           />
         </div>
-        <div className="relative slimBoxShadow py-10 px-1 md:p-10 bg-neutral-800 text-2xl md:text-3xl text-center break-words">
+        <div className="relative py-10 px-1 md:p-10 bg-neutral-800 border-zinc-600 border rounded-xl text-2xl md:text-3xl text-center break-words">
           {!isGenerating ? (
             <>
               <button
