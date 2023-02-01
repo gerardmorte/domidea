@@ -149,7 +149,7 @@ export default function Generator() {
         </form>
         <div className="flex flex-col relative">
           <button
-            className="text-2xl md:text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl md:hover:opacity-70 transition duration-300 w-12/12"
+            className="text-2xl md:text-3xl text-zinc-200 font-bold bg-purple-800 pb-5 pt-4 rounded-3xl md:hover:opacity-70 transition duration-300 w-12/12 cursor-pointer"
             onClick={handleButtonClick}
             disabled={disableBtnGenerate}
           >
