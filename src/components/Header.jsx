@@ -15,8 +15,8 @@ export default function Header() {
           theme == "dark" ? "text-white" : "text-dark"
         } text-3xl`}
       >
-        <div className="flex flex-row gap-2">
-          <FcIdea />
+        <div className="flex flex-row gap-1">
+          <FcIdea className="mt-1" />
           <a href="/" className="text-purple-600 font-bold">
             domidea
           </a>
