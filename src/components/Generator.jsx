@@ -13,7 +13,7 @@ export default function Generator() {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
-  const [randomness, setRandomness] = useState(2.5);
+  const [randomness, setRandomness] = useState(3);
   const [disableBtnGenerate, setDisableBtnGenerate] = useState(false);
   const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
   const [showClipboardAlert, setShowClipboardAlert] = useState(false);
@@ -59,7 +59,7 @@ export default function Generator() {
       const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
       fetchData();
       async function fetchData() {
-        const MAX_CHARACTERS = 25;
+        const MAX_CHARACTERS = 30;
         const data = await domainNameGenerator(
           words,
           example1,
@@ -141,7 +141,7 @@ export default function Generator() {
             className="py-6 md:py-10 accent-white"
             type="range"
             value={randomness}
-            min="0"
+            min="1"
             max="5"
             step="0.10"
             onChange={handleInputRange}
