@@ -1,7 +1,20 @@
+import { useContext } from "react";
+import ThemeContext from "./ThemeContext";
+
 export default function Footer() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <footer className="flex border-t border-zinc-600">
-      <div className="flex flex-col md:flex-row w-10/12 py-5 mx-auto justify-end text-zinc-200 gap-2">
+    <footer
+      className={`flex border-t ${
+        theme == "dark" ? "border-zinc-600" : "border-zinc-300"
+      }`}
+    >
+      <div
+        className={`${
+          theme == "dark" ? "text-zinc-200" : "text-black"
+        } flex flex-col md:flex-row w-10/12 py-5 mx-auto justify-end gap-2`}
+      >
         <div className="flex gap-2">
           <p>Made by</p>
           <a
