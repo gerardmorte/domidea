@@ -169,7 +169,7 @@ export default function Generator() {
           </label>
           <input
             className={`py-6 md:py-10 ${
-              theme == "dark" ? "accent-white" : "accent-black"
+              theme == "dark" ? "accent-white" : "accent-neutral-700"
             }`}
             type="range"
             value={randomness}
@@ -205,7 +205,7 @@ export default function Generator() {
             <>
               <button
                 className={`${
-                  theme == "dark" ? "text-white" : "text-black"
+                  theme == "dark" ? "text-white" : "text-neutral-600"
                 } text-3xl absolute right-0 top-0 m-1 cursor-pointer p-1`}
                 onClick={handleButtonClipboard}
                 disabled={disableBtnClipboard}
@@ -214,7 +214,7 @@ export default function Generator() {
               </button>
               <p
                 className={`${
-                  theme == "dark" ? "text-zinc-200" : "text-black"
+                  theme == "dark" ? "text-zinc-200" : "text-neutral-900"
                 }  font-bold`}
               >
                 {generatedName}
@@ -226,8 +226,8 @@ export default function Generator() {
           <CopiedAlert
             showAlert={showClipboardAlert}
             message="Copied to clipboard"
-            iconComponent={<TiTick className="text-2xl text-green-500" />}
-            backgroundColor={"bg-purple-800"}
+            iconComponent={<TiTick className="text-2xl text-white" />}
+            backgroundColor={"bg-green-800"}
           />
         </div>
       </div>
