@@ -1,5 +1,6 @@
 const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
 const COHERE_API_GENERATE_URL = "https://api.cohere.ai/generate";
+const CHECK_DOMAIN_URL = import.meta.env.VITE_CHECK_DOMAIN_URL;
 
 export async function domainNameGenerator(
   words,
@@ -38,4 +39,11 @@ export async function domainNameGenerator(
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function checkDomainAvailable(domain) {
+  const response = await fetch(`${CHECK_DOMAIN_URL}/${domain}`).then((res) =>
+    res.json()
+  );
+  return response.available;
 }

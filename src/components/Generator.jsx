@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
-import { domainNameGenerator } from "../../services/ia";
+import { checkDomainAvailable, domainNameGenerator } from "../../services/ia";
 import CopiedAlert from "./CopiedAlert";
 import { TiTick } from "react-icons/ti";
 import { MdError } from "react-icons/md";
@@ -60,27 +60,33 @@ export default function Generator() {
       const words = inputsArray.join(", ");
       const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
       const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
-      fetchData();
-      async function fetchData() {
-        const MAX_CHARACTERS = 30;
-        const data = await domainNameGenerator(
-          words,
-          example1,
-          example2,
-          parseFloat(randomness)
-        );
-        if (
-          generatedNamesList.includes(data) ||
-          data.length >= MAX_CHARACTERS ||
-          data.includes(" ")
-        ) {
-          handleButtonClick();
-        } else {
-          setGeneratedNamesList([...generatedNamesList, data]);
-          setIsGenerating(false);
-          setGeneratedName(data.toLocaleLowerCase());
-          setDisableBtnGenerate(false);
-        }
+      fetchData(words, example1, example2, parseFloat(randomness));
+    }
+
+    async function fetchData(words, example1, example2, randomness) {
+      const MAX_CHARACTERS = 30;
+      const data = await domainNameGenerator(
+        words,
+        example1,
+        example2,
+        randomness
+      );
+      console.log(data);
+      const isAvailable = await checkDomainAvailable(data);
+      if (
+        generatedNamesList.includes(data) ||
+        !isAvailable ||
+        data.length >= MAX_CHARACTERS ||
+        data.includes(" ")
+      ) {
+        handleButtonClick();
+        console.log(data);
+      } else {
+        console.log(generatedNamesList);
+        setGeneratedNamesList([...generatedNamesList, data]);
+        setIsGenerating(false);
+        setGeneratedName(data.toLocaleLowerCase());
+        setDisableBtnGenerate(false);
       }
     }
   };
