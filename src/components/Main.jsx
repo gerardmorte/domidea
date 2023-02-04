@@ -23,11 +23,13 @@ export default function Main() {
           Name ideas for web domains.
         </h1>
         <h2
-          className={`text-3xl md:text-4xl text-center md:text-left md:w-6/12 mt-6 ${
+          className={`text-3xl md:text-4xl text-center md:text-left md:w-8/12 mt-6 ${
             theme == "dark" ? "text-zinc-200" : "text-dark"
           } ${appearAnimation}`}
         >
-          Enter three words or concepts to generate a name for a web domain.
+          Enter three words or concepts to generate an{" "}
+          <span className="font-medium">available</span> name for a{" "}
+          <span className="font-medium">web domain.</span>
         </h2>
         <Generator />
       </div>

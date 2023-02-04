@@ -71,7 +71,6 @@ export default function Generator() {
         example2,
         randomness
       );
-      console.log(data);
       const isAvailable = await checkDomainAvailable(data);
       if (
         generatedNamesList.includes(data) ||
@@ -80,9 +79,7 @@ export default function Generator() {
         data.includes(" ")
       ) {
         handleButtonClick();
-        console.log(data);
       } else {
-        console.log(generatedNamesList);
         setGeneratedNamesList([...generatedNamesList, data]);
         setIsGenerating(false);
         setGeneratedName(data.toLocaleLowerCase());
