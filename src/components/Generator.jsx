@@ -16,7 +16,6 @@ export default function Generator() {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
-  const [randomness, setRandomness] = useState(3);
   const [disableBtnGenerate, setDisableBtnGenerate] = useState(false);
   const [disableBtnClipboard, setDisableBtnClipboard] = useState(false);
   const [showClipboardAlert, setShowClipboardAlert] = useState(false);
@@ -39,7 +38,6 @@ export default function Generator() {
   const handleInput1Change = (e) => setInput1(e.target.value);
   const handleInput2Change = (e) => setInput2(e.target.value);
   const handleInput3Change = (e) => setInput3(e.target.value);
-  const handleInputRange = (e) => setRandomness(e.target.value);
 
   const handleButtonClick = () => {
     const inputsArray = [
@@ -60,18 +58,14 @@ export default function Generator() {
       const words = inputsArray.join(", ");
       const example1 = `www.${inputsArray[0]}${inputsArray[1]}.com`;
       const example2 = `www.${inputsArray[1]}${inputsArray[2]}.com`;
-      fetchData(words, example1, example2, parseFloat(randomness));
+      fetchData(words, example1, example2);
     }
 
-    async function fetchData(words, example1, example2, randomness) {
+    async function fetchData(words, example1, example2) {
       const MAX_CHARACTERS = 30;
-      const data = await domainNameGenerator(
-        words,
-        example1,
-        example2,
-        randomness
-      );
+      const data = await domainNameGenerator(words, example1, example2);
       const isAvailable = await checkDomainAvailable(data);
+      console.log(data);
       if (
         generatedNamesList.includes(data) ||
         !isAvailable ||
@@ -84,6 +78,7 @@ export default function Generator() {
         setIsGenerating(false);
         setGeneratedName(data.toLocaleLowerCase());
         setDisableBtnGenerate(false);
+        console.log(generatedNamesList);
       }
     }
   };
@@ -147,41 +142,6 @@ export default function Generator() {
       </div>
 
       <div className="flex flex-col justify-between md:w-6/12 gap-10">
-        <form
-          action=""
-          className={`flex flex-col p-6 ${
-            theme == "dark"
-              ? "bg-neutral-800 border-zinc-600"
-              : "bg-zinc-100 border-zinc-100"
-          }  border rounded-xl w-12/12`}
-        >
-          <label
-            className={`${
-              theme == "dark" ? "text-zinc-200" : "text-black"
-            } text-lg md:text-xl text-left p-2`}
-            htmlFor=""
-          >
-            Randomness:{" "}
-            <span
-              className={`${
-                theme == "dark" ? "bg-neutral-900" : "bg-white"
-              } px-3 pt-2 pb-2 ml-1 rounded-xl`}
-            >
-              {randomness}
-            </span>
-          </label>
-          <input
-            className={`py-6 md:py-10 ${
-              theme == "dark" ? "accent-white" : "accent-neutral-700"
-            }`}
-            type="range"
-            value={randomness}
-            min="1"
-            max="5"
-            step="0.10"
-            onChange={handleInputRange}
-          ></input>
-        </form>
         <div className="flex flex-col relative">
           <button
             className="text-2xl md:text-3xl text-zinc-200 font-bold bg-purple-700 pb-5 pt-4 rounded-3xl hover:bg-purple-800 transition duration-1000 w-12/12 cursor-pointer"

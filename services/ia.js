@@ -2,12 +2,7 @@ const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
 const COHERE_API_GENERATE_URL = "https://api.cohere.ai/generate";
 const CHECK_DOMAIN_URL = import.meta.env.VITE_CHECK_DOMAIN_URL;
 
-export async function domainNameGenerator(
-  words,
-  example1,
-  example2,
-  randomness
-) {
+export async function domainNameGenerator(words, example1, example2) {
   try {
     const data = {
       model: "command-xlarge-20221108",
@@ -16,7 +11,7 @@ export async function domainNameGenerator(
       Example 2: ${example2}
       Generate new example: `,
       max_tokens: 20,
-      temperature: randomness,
+      temperature: 0.8,
       k: 0,
       p: 0.75,
       frequency_penalty: 1,
