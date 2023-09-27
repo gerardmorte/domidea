@@ -1,6 +1,5 @@
 const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
-const COHERE_API_GENERATE_URL = "https://api.cohere.ai/generate";
-const CHECK_DOMAIN_URL = import.meta.env.VITE_CHECK_DOMAIN_URL;
+const COHERE_API_GENERATE_URL = "https://api.cohere.ai/v1/generate";
 
 export async function domainNameGenerator(
   words,
@@ -10,7 +9,7 @@ export async function domainNameGenerator(
 ) {
   try {
     const data = {
-      model: "command-xlarge-20221108",
+      model: "command",
       prompt: `Generate a short creative name for a web domain using the following words: ${words}
       Example 1: ${example1}
       Example 2: ${example2}
@@ -28,7 +27,7 @@ export async function domainNameGenerator(
       method: "POST",
       headers: {
         accept: "application/json",
-        "Cohere-Version": "2022-12-06",
+        // "Cohere-Version": "2022-12-06",
         "Content-Type": "application/json",
         authorization: `Bearer ${COHERE_API_KEY}`,
       },
@@ -39,11 +38,4 @@ export async function domainNameGenerator(
   } catch (error) {
     console.error(error);
   }
-}
-
-export async function checkDomainAvailable(domain) {
-  const response = await fetch(`${CHECK_DOMAIN_URL}/${domain}`).then((res) =>
-    res.json()
-  );
-  return response.available;
 }

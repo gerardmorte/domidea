@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
-import { checkDomainAvailable, domainNameGenerator } from "../../services/ia";
+import { domainNameGenerator } from "../../services/ia";
 import CopiedAlert from "./CopiedAlert";
 import { TiTick } from "react-icons/ti";
 import { MdError } from "react-icons/md";
@@ -71,10 +71,8 @@ export default function Generator() {
         example2,
         randomness
       );
-      const isAvailable = await checkDomainAvailable(data);
       if (
         generatedNamesList.includes(data) ||
-        !isAvailable ||
         data.length >= MAX_CHARACTERS ||
         data.includes(" ")
       ) {

@@ -1,3 +1,4 @@
+import { FcIdea } from "react-icons/fc";
 import { useContext } from "react";
 import ThemeContext from "./ThemeContext";
 
@@ -16,16 +17,15 @@ export default function Footer() {
         } flex flex-col md:flex-row w-10/12 py-5 mx-auto justify-end gap-2`}
       >
         <div className="flex gap-2">
-          <p>Made by</p>
           <a
             className="underline"
-            href="https://github.com/gerardmorte"
+            href="https://github.com/gerardmorte/domidea"
             rel="noreferrer"
             target="_blank"
           >
-            Gerard Morte
+            domidea
           </a>
-          <p>🚀</p>
+          <FcIdea className="mt-1" />
         </div>
         <div className="flex gap-2">
           <p>Using</p>
