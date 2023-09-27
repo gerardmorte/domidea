@@ -1,2 +1,2 @@
 # domidea 💡
-##   Name ideas for web domains.
+https://domidea.netlify.app
